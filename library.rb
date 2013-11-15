@@ -34,18 +34,28 @@ end
 class Borrower
   def initialize(name)
     @name = name
+    @books = []
+    @book_count = 0
   end
 
   def borrowed_books
+    @books
   end
 
   def name
+    @name
   end
 
-  def borrowed_books_count
+  def borrowed_books_count 
+    @book_count
   end
 
   def borrowed_books_list
+    count =1
+    @books.each do |x| 
+      puts "#{count}. #{x.display_info}"
+      count+=1
+    end
   end
 end
 
