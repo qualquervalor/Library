@@ -79,7 +79,7 @@ class Library
     #check if valid inputs
 
     #check if book is available
-    if !(@books.include? book)
+    if !(book_available?(book))
       puts "Sorry, this book is not available for check out."
       return
     end
@@ -110,6 +110,11 @@ class Library
      who.borrowed_books.delete(book)
      who.decrement_book_count
      puts "#{who.name} has checked in #{book.name}"
+  end
+
+  #Public;Checks wether book is available or not
+  def book_available?(book)
+    (@books.include? book)
   end
 end
 
