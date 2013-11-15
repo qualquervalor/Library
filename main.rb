@@ -71,6 +71,10 @@ puts "ricardo:"
 ricardo.borrowed_books_list
 puts "-------------------------"
 
+puts "Checking in Stranger from Mike"
+library.check_in( stranger)
+puts "-------------------------"
+
 puts "this should only show the borrowed books with their borrowers"
 library.borrowed_books
 puts "-------------------------"
