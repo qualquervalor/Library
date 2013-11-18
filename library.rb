@@ -175,15 +175,21 @@ class Book
   #
   # title  - String with title of book
   # author - String with author of the book
-  def initialize(title, author)
+  def initialize(title, author, *args)
     @title = title
     @author = author
+    defaults = {year_published: "NA",edition: "NA"}
+    options = args.last.is_a?(::Hash) ? args.pop : {}
+    options = defaults.merge(options)
+
+    @year_published = args[0] || options[:year_published]
+    @edition = args[1] || options[:edition]
   end
 
   #Public: Display details about a book
   #
   # Return string containing book details
   def display_info
-    "#{@title} by #{@author}"
+    "#{@title} by #{@author}" +(@edition!="NA" ? " Edition: #{@edition}" : "")+(@year_published!="NA" ? " (#{@year_published})" : "") 
   end
 end

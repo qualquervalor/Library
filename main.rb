@@ -11,8 +11,8 @@ gilbert = Borrower.new("Gilbert")
 puts "-------------------------"
 
 puts "create our books"
-stranger = Book.new("The Stranger", "Albert Camus")
-nausea = Book.new("Nausea", "Jean-Paul Sartre")
+stranger = Book.new("The Stranger", "Albert Camus","1954")
+nausea = Book.new("Nausea", "Jean-Paul Sartre",nil,"First")
 karamazov = Book.new("The Brothers Karamazov", "Fyodor Dostoesvky")
 feynman = Book.new("Surely You're Joking Mr. Feynman", "Richard Feynman")
 finnegan = Book.new("Finnegans Wake", "James Joyce")
