@@ -95,7 +95,6 @@ class Library
 
     #update user details to reflect borrowing this book
     user.borrowed_books.push book
-    user.increment_book_count
 
     #update library borrowed hash
     @borrowed_books[book] = user
@@ -108,8 +107,7 @@ class Library
      @books.push book
      who = @borrowed_books.delete(book)
      who.borrowed_books.delete(book)
-     who.decrement_book_count
-     puts "#{who.name} has checked in #{book.name}"
+     puts "#{who.name} has checked in #{book.title}"
   end
 
   #Public;Checks wether book is available or not
@@ -124,14 +122,14 @@ end
 #
 #   Borrower("bob")
 class Borrower
+  attr_reader :name
 
-  # Public: Initialize Borrower with name, books array and a count of number of books borrowed.
+  # Public: Initialize Borrower with name, books array 
   #
   # name  - Name of the borrower
   def initialize(name)
     @name = name
     @books = []
-    @book_count = 0
   end
 
   #Public: Getter for borrowed books
@@ -141,28 +139,11 @@ class Borrower
     @books
   end
 
-  #Public: Getter for name
-  #
-  #Returns name object
-  def name
-    @name
-  end
-
   #Public: Getter for book_count
   #
   #Returns integer representing the number of books borrowed by user
   def borrowed_books_count 
-    @book_count
-  end
-
-  #Public: increments book_count
-  def increment_book_count
-    @book_count+=1
-  end
-
-  #Public: Decrementd book_count
-  def decrement_book_count
-    @book_count-=1
+    @books.length
   end
 
   # Public: Prints out the borrowed books of this user
@@ -188,6 +169,7 @@ end
 #
 #   Book("My title","My Author")
 class Book
+  attr_reader :title;
 
   # Public: Initialize Book with title and author.
   #
